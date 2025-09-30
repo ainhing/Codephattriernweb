@@ -16,9 +16,9 @@ thead{
     text-align: left;
 }
 #customers { 
-    font-family: Arial, Helvetica; /* font chữ */
+    font-family: Arial, Helvetica; 
     width: 100%; 
-    border-collapse: collapse; /* gộp viền thành 1 */
+    border-collapse: collapse; 
 } 
 th {
   font-size: 1.1em;
