@@ -1,0 +1,36 @@
+tbody tr:nth-child(2n+1) {
+    background-color: rgb(255, 255, 255);
+}
+tbody tr:nth-child(2n) {
+    background-color: rgba(168, 222, 143, 0.659);
+}
+table,tr,th,td {
+            border: 0.5px;
+            border-style: solid;
+            border-color: rgb(117, 158, 121);
+            padding:0%;
+        }
+thead{
+    background-color: rgba(86, 120, 14, 0.867);
+    color:aliceblue;
+    text-align: left;
+}
+#customers { 
+    font-family: Arial, Helvetica; /* font chữ */
+    width: 100%; 
+    border-collapse: collapse; /* gộp viền thành 1 */
+} 
+th {
+  font-size: 1.1em;
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  background-color: #A7C942;
+  color: #ffffff;
+}
+td, th  
+{ 
+font-size: 20px;
+border:1px solid #98bf21; 
+padding:3px 7px 2px 7px; 
+} 
