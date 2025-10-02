@@ -2,11 +2,92 @@
    <head>
        <meta charset='utf-8'>
        <title>Register - Nguyễn Thị Ái Nhi</title>
+       <style>
+        label{
+            display: inline-block;
+            width:120px;
+        }
+       </style>
    </head>
-   <body>
-       <form>
-        <p> 
-            <img src="images/">
+   <body style="background-color:rgba(80, 102, 180, 0.773)">
+       <form name="registration"
+       action="processlogin.html" 
+       method="post">
+        <p align="center"> 
+            <img src="../images/Jackson.gif">
+        </p>
+        <h3 align="center">Registration Form</h3>
+        <p align="center">Register your Jackson Electronics products here</p>
+        <label for="firstname">First Name: </label>
+            <input type="text" id="firstname" name="firstname">
+        <label for="lastname">Last Name: </label>
+            <input type="text" id="lastname" name="lastname">
+        <p/>
+        <label for="address1">Address #1: </label>
+            <input type="text" id="address1" name="address1">
+        <p/>
+        <label for="address2">Address #2: </label>
+            <input type="text" id="address2" name="address2">
+        <p/>
+        <label for="city">City: </label>
+            <input type="text" id="city" name="city">
+        <label for="State" style="width:auto">State: </label>
+            <input type="text" id="State" name="State">
+        <label for="Zip" style="width:auto">Zip: </label>
+            <input type="text" id="Zip" name="Zip">
+        <p/>
+        <label for="Country">Country: </label>
+            <input type="text" id="Country" name="Country" value="United States">
+       <hr/>
+        <label>Product</label>
+            <Select name="product" id="product">
+                <option value="1">ScanMaster</option>
+                <option value="2">P01</option>
+                <option value="3">P02</option>
+                <option value="4">P03</option>
+            </Select>
+        <p/>
+        <label for="datepurchase">Date Purchased: </label>
+            <input type="text" id="datepurchase" name="datepurchase">
+        <p/>    
+        <label for="Serial">Serial #</label>
+            <input type="text" id="Serial" name="Serial">
+        <p/>
+    <table>
+        <tr>
+            <td><label>Used for:</label></td>
+            <td><input type="radio" name="usefor" value="home"> Home</td>
+            <td><input type="radio" name="usefor" value="edu"> Educational Institution</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="radio" name="usefor" value="business"> Business</td>
+            <td><input type="radio" name="usefor" value="other"> Other</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="radio" name="usefor" value="gov"> Government</td>
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
+            <td><label style="width:auto">System (check all that apply):</label></td>
+            <td><input type="checkbox" name="system" value="windows"> Windows</td>
+            <td><input type="checkbox" name="system" value="unix"> UNIX</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox" name="system" value="mac"> Macintosh</td>
+            <td><input type="checkbox" name="system" value="other"> Other</td>
+        </tr>
+    </table>
+        <hr/>
+        <label for="Comments">Comments?: </label>
+            <input type="text" id="Comments" name="Comments"  style="width: 300px;height:100px">
+        <p align="center">
+            <button type ="register" name="register" id="register" > Click to register </button>
+            <button type ="cancel" name="cancel" id="cancel" > Click to register </button>
         </p>
        </form>
    </body>
