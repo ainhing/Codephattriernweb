@@ -1,0 +1,70 @@
+ <html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Online Classifield - Nguyễn Thị Ái Nhi</title>
+        <style>
+            form {
+                margin: 0 auto;
+                width: 600px;
+                background-color: #dce9ff;
+                padding: 20px;
+                border: 2px solid blue;
+            }
+        </style>
+    </head>
+    <body style="background-color: rgba(0, 255, 255, 0.132);">
+        <form>
+            <h1 style="color:red"> Online Classifield Search Form</h1>
+            <hr/>
+            <label style="font-weight: bold;">1) Search for a classified in the following sections: </label>
+            <table>
+                <tr>
+                    <td><input type="radio" name="emp" id="emp"><label for="emp"> Employment</label></td>
+                    <td><input type="radio" name="per" id="per"> <label for="per">Personal</label></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="sale" id="sale"><label for="sale"> For Sale </label> </td>
+                    <td><input type="radio" name="mil" id="mil"> <label for="mil">Miscellanecus </label></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="house" id="house"><label for="house"> Housing</label></td>
+                    <td><input type="radio" name="all" id="all"> <label for="all">All of the above </label></td>
+                </tr>
+            </table>
+            <label style="font-weight: bold;">2) Search the following publications: </label>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="b1" id="b1"> <label for="b1">Midwest times</label></td>
+                    <td><input type="checkbox" name="b2" id="b2"> <label for="b2">Modern News</label></td>
+                    <td><input type="checkbox" name="b3" id="b3"> <label for="b3">Employment Today</label></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="b4" id="b4"> <label for="b4">Great Lakes Classifieds</label></td>
+                    <td><input type="checkbox" name="b5" id="b5"> <label for="b5">Middleton Daily</label></td>
+                    <td><input type="checkbox" name="b6" id="b6"> <label for="b6">Cash Daily News</label></td>
+                </tr>
+            </table>
+            <label>
+                <label for="fromto" style="width:auto ;font-weight: bold;"">3) From to</label>
+            <input type="text" id="fromto" name="fromto" value="mm/dd/yy"> 
+            <label style="font-weight: bold;" for="to">to</label>
+            <input type="text" id="to" name="to" value="mm/dd/yy"> 
+            </label>
+            <p/>
+            <label style="font-weight: bold" for="kword">4) Enter a few keywords to describe the classified </label> <br/>
+            <input type="text" id="kword" name="kword" style="width:500px">
+            <p/>
+            <label style="font-weight: bold" for="kword">5) Click one of the option below: </label> <br/>
+            <button type="button" name="search" id="search">
+                <img src="../ex49/Search.gif">
+            </button>
+            <button type="submit" name="help" id="help">
+                <img src="../ex49/Help.gif">
+            </button>
+            <button type="reset" name="cancel" id="cancel">
+                <img src="../ex49/Cancel.gif">
+            </button>
+        </form>
+    </body>
+ </html>
+ 
