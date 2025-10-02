@@ -56,30 +56,12 @@
     <table>
         <tr>
             <td><label>Used for:</label></td>
-            <td><input type="radio" name="usefor" value="home"> Home</td>
-            <td><input type="radio" name="usefor" value="edu"> Educational Institution</td>
+            <td><input type="radio" name="usefor" id="home"> Home</td>
+            <td><input type="radio" name="usefor" id="edu"> Educational Institution</td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="radio" name="usefor" value="business"> Business</td>
-            <td><input type="radio" name="usefor" value="other"> Other</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="radio" name="usefor" value="gov"> Government</td>
-        </tr>
-    </table>
-    
-    <table>
-        <tr>
-            <td><label style="width:auto">System (check all that apply):</label></td>
-            <td><input type="checkbox" name="system" value="windows"> Windows</td>
-            <td><input type="checkbox" name="system" value="unix"> UNIX</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="checkbox" name="system" value="mac"> Macintosh</td>
-            <td><input type="checkbox" name="system" value="other"> Other</td>
+            <td><input type="radio" name="usefor"id="other"> Other</td>
         </tr>
     </table>
         <hr/>
@@ -87,7 +69,7 @@
             <input type="text" id="Comments" name="Comments"  style="width: 300px;height:100px">
         <p align="center">
             <button type ="button" name="register" id="register" onclick="alert('Registration successful!')"> Click to register </button>
-            <button type ="reset" name="cancel" id="cancel" > Click to register </button>
+            <button type ="reset" name="cancel" id="cancel" > Click to reset</button>
         </p>
        </form>
    </body>
