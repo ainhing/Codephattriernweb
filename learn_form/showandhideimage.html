@@ -1,0 +1,28 @@
+<html>
+   <head>
+       <meta charset='utf-8'>
+       <title> Nguyễn Thị Ái Nhi</title>
+       <script>
+        function show_hide_image(value)
+        {
+        //step1: get image element
+        img_taylor=document.getElementById("taylor123")
+        //step2: show/hide image(using style display -> none)
+        img_taylor.style="display:"+value
+        }
+        
+       </script>
+   </head>
+   <body>
+       <form name="myform">
+        <input type ="radio" name="myimage" id="img1" onchange="show_hide_image('block')"/>
+        <label for="img1"> Show Image</label>
+        <br/>
+        <input type ="radio" name="myimage" id="img2" onchange="show_hide_image('none')"/>
+        <label for="img1"> Hide Image</label>
+        <br/>
+        <img src="images/FoxMascot.png" id="taylor123" name="taylor123"
+         style="display:block; width:auto;height:200px"/>
+       </form>
+   </body>
+</html>
