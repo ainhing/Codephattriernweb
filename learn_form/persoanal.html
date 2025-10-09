@@ -1,0 +1,54 @@
+<html>
+   <head>
+       <meta charset='utf-8'>
+       <title>Nguyễn Thị Ái Nhi</title>
+       <script>
+        function update_name()
+        {
+            myform.full_name.value = myform.fname.value + " " + 
+                                     myform.mname.value + " " + 
+                                     myform.lname.value;
+            //myform.full_name_id==myform.full_name.value
+            full_name_td = document.getElementById("full_name_td");
+            full_name_td.innerText = myform.full_name.value;
+            //alert("đã thành công")
+        }
+       </script>
+   </head>
+   <body>
+       <form name="myform">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input type="text" name="fname" id="fname" oninput="update_name()"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Middle Name</td>
+                <td>
+                    <input type="text" name="mname" id="mname" oninput="update_name()"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>
+                    <input type="text" name="lname" id="lname" oninput="update_name()"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Full Name</td>
+                <td>
+                    <input type="text" name="full_name" id="full_name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Full Name</td>
+                <td id="full_name_td">
+
+                </td>
+            </tr>
+        </table>
+       </form>
+   </body>
+</html>

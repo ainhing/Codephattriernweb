@@ -1,0 +1,51 @@
+<html>
+   <head>
+       <meta charset='utf-8'>
+       <title>Ex52 - Nguyễn Thị Ái Nhi</title>
+   </head>
+   <body>
+       <form name="ex52" method="get" action="contact.html">
+        <h3>Contact the editorial office</h3>
+        <label>
+            Full name
+        <br/>
+        <input type="text" name="fullname" id="fullname"/> 
+        </label>
+        <p/>
+        <table>
+            <tr>
+                <td>Email</td>
+                <td>Send to</td>
+            </tr>
+            <tr>
+                <td><input type="email" name="email" id="email"/> </td>
+                <td>
+                    <select name="send" id="send">
+                        <option value="send01">Editorial board</option>
+                        <option value="send02">News Department</option>
+                        <option value="send03">Board of Perspective</option>
+                        <option value="send04">World Board</option>
+                        <option value="send04">Business Department</option>
+                    </select>
+                </td>
+            </tr>        
+        </table>
+        <label>
+            Title
+            <br/>
+            <input type="text" name="title" id="title"/>
+        </label>
+        <p/>
+        <label>
+            Content
+            <br/>
+            <input type="text" name="content" id="content"/>
+        </label>
+        <p>
+            <button type="submit" style="background-color: purple; color: white; padding: 6px 15px; border: none; border-radius: 4px;">
+                Send
+            </button>
+        </p>
+       </form>
+   </body>
+</html>
