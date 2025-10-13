@@ -1,19 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Order Result - Nguyễn Thị Ái Nhi</title>
-</head>
-<body>
-  <h3>Order Summary</h3>
-  <script>
-    const p = new URLSearchParams(window.location.search);
-    document.write(`<p><b>Mouse subtotal:</b> ${p.get("item1")} $ (Qty ${p.get("qty1")})</p>`);
-    document.write(`<p><b>Keyboard subtotal:</b> ${p.get("item2")} $ (Qty ${p.get("qty2")})</p>`);
-    document.write(`<p><b>USB subtotal:</b> ${p.get("item3")} $ (Qty ${p.get("qty3")})</p>`);
-    document.write(`<hr><p><b>Total:</b> ${p.get("total")} $</p>`);
-  </script>
-  <hr>
-  <a href="product.html">← Back to Product List</a>
-</body>
+<html>
+	<head>
+		<title>Exercise 53 - Phan Thị Ngọc Khuyến</title>
+        <style type = "text/css">
+            button {
+                background-color:gold;
+                color:white;
+            }
+            tr,td {
+                text-align: center;
+            }
+        </style>
+        <script type = "text/javascript">
+            function do_total()
+            {
+            let qty1 = parseFloat(document.getElementById("qty1").value) || 0;
+            let qty2 = parseFloat(document.getElementById("qty2").value) || 0;
+            let qty3 = parseFloat(document.getElementById("qty3").value) || 0;
+
+            let p1 = parseFloat(document.getElementById("p1").innerText.replace("$", ""));
+            let p2 = parseFloat(document.getElementById("p2").innerText.replace("$", ""));
+            let p3 = parseFloat(document.getElementById("p3").innerText.replace("$", ""));
+            let total = (p1 * qty1) + (p2 * qty2) + (p3 * qty3);
+
+            document.getElementById("total").value = total.toFixed(2) + " $";
+        }
+        </script>
+	</head>
+	<body>
+		<form name = "form_product" action = "Product_In4.html" method = "get">
+            <table width = 100% cellspacing = "2" cellpadding = "4">
+                <tr>
+                    <th>Part Number</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Item Table</th>
+                </tr>
+                <tr>
+                    <td>C112</td>
+                    <td>Mouse</td>
+                    <td id = "p1">19.95$</td>
+                    <td>
+                        <input type = "number" id = "qty1" name = "qty1" oninput = "do_total()"/>
+                    </td>
+                    <td>
+                        <select type = "combobox" id = "itemtab1" name = "itemtab1">
+                            <option value="1">Control Device</option>
+                            <option value = "2">Connecting Device</option>
+                            <option value = "3">Monitoring Device</option>
+                            <option value = "4">Others</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>B124</td>
+                    <td>Keyboard US</td>
+                    <td id = "p2">29.95$</td>
+                    <td>
+                        <input type = "number" id = "qty2" name = "qty2" oninput = "do_total()"/>
+                    </td>
+                    <td>
+                        <select type = "combobox" id = "itemtab2" name = "itemtab2">
+                            <option value="1">Control Device</option>
+                            <option value = "2">Connecting Device</option>
+                            <option value = "3">Monitoring Device</option>
+                            <option value = "4">Others</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>U125</td>
+                    <td>USB KingMax</td>
+                    <td id = "p3">39.95$</td>
+                    <td>
+                        <input type = "number" id = "qty3" name = "qty3" oninput = "do_total()"/>
+                    </td>
+                    <td>
+                        <select type = "combobox" id = "itemtab3" name = "itemtab3">
+                            <option value="1">Control Device</option>
+                            <option value = "2">Connecting Device</option>
+                            <option value = "3">Monitoring Device</option>
+                            <option value = "4">Others</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <hr/>
+            <p align = "right">
+                <label for = "total">Total: </label>
+                <input type = "text" id = "total" name = "total"/> <br/>
+                <button type = "submit" id = "sum" name = "sum" style="background-color: orange;">Sum</button>
+            </p>
+        </form>
+	</body>
 </html>
