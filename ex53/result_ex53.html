@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Order Result - Nguyễn Thị Ái Nhi</title>
+</head>
+<body>
+  <h3>Order Summary</h3>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    document.write(`<p><b>Mouse subtotal:</b> ${p.get("item1")} $ (Qty ${p.get("qty1")})</p>`);
+    document.write(`<p><b>Keyboard subtotal:</b> ${p.get("item2")} $ (Qty ${p.get("qty2")})</p>`);
+    document.write(`<p><b>USB subtotal:</b> ${p.get("item3")} $ (Qty ${p.get("qty3")})</p>`);
+    document.write(`<hr><p><b>Total:</b> ${p.get("total")} $</p>`);
+  </script>
+  <hr>
+  <a href="product.html">← Back to Product List</a>
+</body>
+</html>
