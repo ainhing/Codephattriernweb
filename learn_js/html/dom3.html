@@ -1,0 +1,141 @@
+<html>
+   <head>
+       <meta charset='utf-8'>
+       <title>Nguyễn Thị Ái Nhi</title>
+       <script type="text/javascript">
+        datasets =[
+        {
+            ID: "P01",
+            Name: "Coca",
+            Quantity: 2,
+            Price: 15,
+            Photo: "coca.jpg"
+        }
+        ,{
+            ID: "P02",
+            Name: "Pepsi",
+            Quantity: 3,
+            Price: 12,
+            Photo: "pepsi.jpg"
+        }
+        ,{
+            ID: "P03",
+            Name: "7up",
+            Quantity: 4,
+            Price: 10,
+            Photo: "7up.jpg"
+        }
+        ,{
+            ID: "P04",
+            Name: "Sting",
+            Quantity: 5,
+            Price: 8,
+            Photo: "sting.jpg"
+        }
+        ,{
+            ID: "P05",
+            Name: "Fanta",
+            Quantity: 6,
+            Price: 20,
+            Photo: "fanta.jpg"
+        }
+    ]
+       </script>
+   </head>
+   <!-- hãy dùng mô hình dom để tải ds sp-->
+   <body>
+       <table border="1">
+        <caption>List of Products: </caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Photo</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="product_tbody">
+
+        </tbody>
+        </table>
+        <script type="text/javascript">
+            product_tbody = document.getElementById("product_tbody");
+            //alert(datasets.length)
+            for (i=0; i<datasets.length; i++)
+             {
+                item=datasets[i]
+                //step1 create tr
+                row=document.createElement("tr")
+                td_id=document.createElement("td")
+                td_name=document.createElement("td")
+                td_quantity=document.createElement("td")
+                td_price=document.createElement("td")
+                td_photo=document.createElement("td")
+                td_action=document.createElement("td")
+                //step2 assign value for item html element
+                td_id.innerText=item.ID
+                td_name.innerText=item.Name
+                td_quantity.innerText=item.Quantity
+                td_price.innerText=item.Price
+
+                img = document.createElement("img");
+                img.setAttribute("src","../images/" + item.Photo);
+                img.setAttribute("width", "50");
+                img.setAttribute("height", "50");
+                img.setAttribute("title", "Click here to view detail");
+                td_photo.appendChild(img);
+
+                ic_detail=document.createElement("img")
+                ic_detail.setAttribute("src","../images/ic_detail.png")
+                ic_detail.setAttribute("title", "View detail")
+                ic_detail.setAttribute("style", "cursor:pointer")
+                ic_detail.item_product=item
+                ic_detail.onclick=function(){
+                 jsonstring=JSON.stringify(this.item_product)
+                 //use locastorage for saving:
+                 localStorage.setItem("selected_product", jsonstring)
+                 //open new tab for detail.html
+                 window.open("detail.html", "_blank");
+
+                }
+
+                td_action.appendChild(ic_detail)
+
+                ic_edit=document.createElement("img")
+                ic_edit.setAttribute("src","../images/ic_icon.png")
+                ic_edit.setAttribute("title", "Edit")   
+                ic_edit.setAttribute("style", "cursor:pointer")
+                td_action.appendChild(ic_edit) 
+
+                ic_delete=document.createElement("img")
+                ic_delete.setAttribute("src","../images/ic_delete.png")
+                ic_delete.setAttribute("style", "cursor:pointer")
+                ic_delete.setAttribute("title", "Delete")
+                //create an attribute for ic_delete
+                ic_delete.my_row_parent=row
+                //add an event for ic_delete
+                ic_delete.onclick=function(){
+                    if(confirm("Bạn có muốn xóa không"))
+                {
+                    parent_row=this.my_row_parent
+                    alert("ok, xóa "+parent_row.childNodes[1].innerText+" nhé")
+                    product_tbody.removeChild(parent_row)
+                }
+                }
+                td_action.appendChild(ic_delete)
+                
+                //step3 attach td(s) to tr(row)
+                row.appendChild(td_id)
+                row.appendChild(td_name)
+                row.appendChild(td_quantity)
+                row.appendChild(td_price)
+                row.appendChild(td_photo)
+                row.appendChild(td_action)
+                //step4 attach row to tbody    
+                product_tbody.appendChild(row) 
+             }           
+        </script>
+   </body>
+</html>

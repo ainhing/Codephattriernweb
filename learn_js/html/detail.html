@@ -1,0 +1,50 @@
+<html>
+   <head>
+       <meta charset='utf-8'>
+       <title>Nguyễn Thị Ái Nhi</title>
+   </head>
+   <body>
+       <table border=1">
+        <tr>
+            <td>
+                <td>Product ID</td>
+                <td id="td_id"></td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <td>Product Name</td>
+                <td id="td_name"></td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <td>Quantity</td>
+                <td id="td_quantity"></td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <td>Price</td>
+                <td id="td_price"></td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <td>Photo</td>
+                <td id="td_photo"><img id="img_product" width="80"></td>
+            </td>
+        </tr>
+        </table>
+        <script type="text/javascript">
+            // get selected product from localstorage
+            selected_product_string = localStorage.getItem("selected_product");
+            selected_product_object = JSON.parse(selected_product_string);
+            td_id.innerText=selected_product_object.ID;
+            td_name.innerText=selected_product_object.Name;
+            td_quantity.innerText=selected_product_object.Quantity;
+            td_price.innerText=selected_product_object.Price;
+            img_product.src="../images/"+selected_product_object.Photo;
+        </script>
+   </body>
+</html>

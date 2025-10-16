@@ -1,0 +1,50 @@
+<html>
+   <head>
+       <meta charset='utf-8'>
+       <title>Ex66 - Nguyễn Thị Ái Nhi</title>
+   </head>
+   <body>
+       <table border="1">
+        <tr style="background-color: rgba(255, 255, 0, 0.595);text-align: center;">
+            <td colspan="2"> Student Information</td>
+        </tr>
+        <tr>
+            <td> Student ID:</td>
+            <td id="td_id"></td>
+        </tr>
+        <tr>
+            <td> Student Name:</td>
+            <td id="td_name"></td>
+        </tr>
+        <tr>
+            <td> Birthday: </td>
+            <td id="td_birthday"></td>
+        </tr>
+        <tr>
+            <td> Gender:</td>
+            <td id="td_gender"></td>
+        </tr>
+       </table>
+       <script>
+        var xhr =new XMLHttpRequest();
+            xhr.open("GET","../ex66/student.xml",true);
+            xhr.send();
+            xhr.onreadystatechange=function()
+            {
+                if (xhr.readyState==4 && xhr.status==200)
+                {
+                    //handling when loading data successfully
+                    var xmlDoc = xhr.responseXML;
+                    id=xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+                    name=xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                    birthday=xmlDoc.getElementsByTagName("birthday")[0].childNodes[0].nodeValue;
+                    gender=xmlDoc.getElementsByTagName("gender")[0].childNodes[0].nodeValue;
+                    td_id.innerText=id;
+                    td_name.innerText=name;
+                    td_birthday.innerText=birthday;
+                    td_gender.innerText=gender;
+                }
+            }
+       </script>
+   </body>
+</html>
