@@ -25,7 +25,7 @@ function calc_math() {
     } else {
       let x1 = (-b - Math.sqrt(delta)) / (2 * a);
       let x2 = (-b + Math.sqrt(delta)) / (2 * a);
-      res.value = `x1=${x1.toFixed(2)} ; x2=${x2.toFixed(2)}`;
+      res.value = `x1= ${x1.toFixed(2)} ; x2= ${x2.toFixed(2)}`;
     }
   }
 }
