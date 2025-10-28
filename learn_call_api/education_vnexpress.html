@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>VnExpress RSS Reader</title>
+  <style>
+    table{border-collapse:collapse;margin-top:12px;width:100%}
+    th,td{border:1px solid #ddd;padding:8px;vertical-align:top}
+    thead{background:#f4f5f7}
+    img{max-width:200px;height:auto;display:block}
+    .desc{max-width:520px}
+    .controls {
+      margin: 20px 0;
+      padding: 10px;
+      background: #f4f5f7;
+    }
+    select {
+      padding: 5px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 5px 10px;
+    }
+  </style>
+  <script type="text/javascript">
+    const RSS_FEEDS = {
+      "trang-chu": "Trang chủ - https://vnexpress.net/rss/tin-moi-nhat.rss",
+      "thoi-su": "Thời sự - https://vnexpress.net/rss/thoi-su.rss",
+      "giao-duc": "Giáo dục - https://vnexpress.net/rss/giao-duc.rss",
+      "kinh-doanh": "Kinh doanh - https://vnexpress.net/rss/kinh-doanh.rss",
+      "the-thao": "Thể thao - https://vnexpress.net/rss/the-thao.rss",
+      "giai-tri": "Giải trí - https://vnexpress.net/rss/giai-tri.rss",
+      "khoa-hoc": "Khoa học - https://vnexpress.net/rss/khoa-hoc.rss"
+    };
+
+    function get_rss_feed() {
+      const select = document.getElementById("rss_select");
+      const feedUrl = select.value;
+      // Sử dụng proxy để tránh lỗi CORS
+      const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(feedUrl);
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", proxyUrl, true);
+      xhr.send();
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          // Hiển thị raw response
+          var my_div = document.getElementById("my_div");
+          my_div.textContent = xhr.responseText;
+
+          try {
+            // Parse XML
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(xhr.responseText, "text/xml");
+
+            // Lấy các item
+            var items = xmlDoc.getElementsByTagName("item");
+            display_rss(items);
+          } catch (error) {
+            console.error("Lỗi khi xử lý RSS:", error);
+            var tbody = document.getElementById("rss_tbody");
+            tbody.innerHTML = "<tr><td colspan='4'>Có lỗi khi tải tin tức. Vui lòng thử lại.</td></tr>";
+          }
+        }
+      };
+    }
+
+    function display_rss(items) {
+      var tbody = document.getElementById("rss_tbody");
+      tbody.innerHTML = "";
+
+      if (!items || items.length === 0) {
+        var tr_empty = document.createElement("tr");
+        var td_empty = document.createElement("td");
+        td_empty.colSpan = 5;
+        td_empty.innerText = "Không có dữ liệu RSS.";
+        tr_empty.appendChild(td_empty);
+        tbody.appendChild(tr_empty);
+        return;
+      }
+
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        
+        // Helper function để lấy nội dung text từ thẻ XML
+        var getText = function(tagName) {
+          var el = item.getElementsByTagName(tagName)[0];
+          return el ? (el.textContent || el.innerHTML || "").trim() : "";
+        };
+        
+        var title = getText("title");
+        var link = getText("link");
+        var pubDate = getText("pubDate");
+        var description = getText("description");
+        
+        // Tách thumbnail từ description nếu có
+        var thumb = "";
+        var imgMatch = description.match(/<img[^>]+src=["']([^"']+)["']/i);
+        if (imgMatch && imgMatch[1]) {
+          thumb = imgMatch[1];
+        }
+
+        // Tạo hàng
+        var tr = document.createElement("tr");
+
+        var td_title = document.createElement("td");
+        var a = document.createElement("a");
+        a.href = link;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = title || "(Không có tiêu đề)";
+        td_title.appendChild(a);
+
+        var td_time = document.createElement("td");
+        td_time.textContent = pubDate;
+
+        var td_desc = document.createElement("td");
+        td_desc.className = "desc";
+        // loại bỏ thẻ img khỏi phần mô tả hiển thị
+        var cleanDesc = description.replace(/<img[^>]*>/gi, "").replace(/<\/?br\s*\/?>/gi, "\n");
+        // Lấy text đơn giản từ HTML
+        var tmp = document.createElement("div");
+        tmp.innerHTML = cleanDesc;
+        td_desc.textContent = (tmp.textContent || "").trim();
+
+        var td_thumb = document.createElement("td");
+        if (thumb) {
+          var img = document.createElement("img");
+          img.src = thumb;
+          img.alt = title;
+          td_thumb.appendChild(img);
+        } else {
+          td_thumb.textContent = "";
+        }
+
+        tr.appendChild(td_title);
+        tr.appendChild(td_time);
+        tr.appendChild(td_desc);
+        tr.appendChild(td_thumb);
+
+        tbody.appendChild(tr);
+      }
+    }
+
+    window.onload = get_rss_feed;
+  </script>
+</head>
+  <body>
+  <div class="controls">
+    <select id="rss_select" onchange="get_rss_feed()">
+      <option value="https://vnexpress.net/rss/tin-moi-nhat.rss">Trang chủ - Tin mới nhất</option>
+      <option value="https://vnexpress.net/rss/thoi-su.rss">Thời sự</option>
+      <option value="https://vnexpress.net/rss/giao-duc.rss">Giáo dục</option>
+      <option value="https://vnexpress.net/rss/kinh-doanh.rss">Kinh doanh</option>
+      <option value="https://vnexpress.net/rss/the-thao.rss">Thể thao</option>
+      <option value="https://vnexpress.net/rss/giai-tri.rss">Giải trí</option>
+      <option value="https://vnexpress.net/rss/khoa-hoc.rss">Khoa học</option>
+    </select>
+    <button onclick="get_rss_feed()">Tải tin tức</button>
+  </div>
+
+  <div id="my_div" style="height:160px;overflow-y:auto;background:#fff6e6;white-space:pre;"></div>
+
+  <table>
+    <caption><strong>VnExpress RSS Reader</strong></caption>
+    <thead>
+      <tr>
+        <th>Tiêu đề</th>
+        <th>Thời gian</th>
+        <th>Mô tả</th>
+        <th>Ảnh</th>
+      </tr>
+    </thead>
+    <tbody id="rss_tbody"></tbody>
+  </table>
+</body>
+</html>
